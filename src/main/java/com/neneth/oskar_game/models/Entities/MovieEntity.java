@@ -11,8 +11,11 @@ import java.util.Set;
 @Setter
 public class MovieEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long movieId;
+
+    @Column
+    private String original_title;
 
     @Column
     private String title;

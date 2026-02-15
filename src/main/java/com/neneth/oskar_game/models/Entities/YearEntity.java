@@ -11,7 +11,7 @@ import java.util.Set;
 @Setter
 public class YearEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long yearId;
 
     @Column

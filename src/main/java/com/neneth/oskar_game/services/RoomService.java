@@ -5,19 +5,18 @@ import com.neneth.oskar_game.models.Dtos.CreateRoomDto;
 import com.neneth.oskar_game.models.Messages.WebSocketMessage;
 import com.neneth.oskar_game.models.Player;
 import com.neneth.oskar_game.models.Room;
+import com.neneth.oskar_game.repositories.CategoryRepository;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 @Getter
 public class RoomService {
+    private final CategoryService categoryService;
     private List<Room> rooms = new ArrayList<>();
 
     public Room createRoom(final WebSocketMessage message) {
@@ -32,7 +31,9 @@ public class RoomService {
                 new java.util.Date(),
                 message.getPseudo(),
                 List.of(currentPlayer),
-                false
+                false,
+                categoryService.getAllCategoriesThisYearAsPrediction(new GregorianCalendar().get(Calendar.YEAR)),
+                0
         );
         this.rooms.add(room);
         return room;
@@ -83,8 +84,26 @@ public class RoomService {
     public Room startGame(final WebSocketMessage message) {
         final Room room = this.getRoom(message.getRoomId());
         final Player player = this.getPlayer(room, message.getClientId());
+        if(!player.isAdmin()) {
+            throw new IllegalCallerException("Player not authorized to start the game");
+        }
+
+        if(!room.getPlayers().stream().filter(p -> !p.isReady() && !p.isAdmin()).toList().isEmpty()) {
+            throw new IllegalStateException("Cannot start the game if not all players are ready");
+        }
 
         room.setInProgress(true);
+        room.setStep(0); // Safety, but should be already at 0
+
+        return room;
+    }
+
+    public Room addPrediction(final WebSocketMessage message) {
+        final Room room = this.getRoom(message.getRoomId());
+
+        // traitement
+
+        room.setStep(room.getStep()+1);
 
         return room;
     }

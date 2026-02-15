@@ -11,13 +11,13 @@ import java.util.Set;
 @Setter
 public class CategoryEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private Set<MovieItemEntity> movieItems;
 
     @ManyToOne

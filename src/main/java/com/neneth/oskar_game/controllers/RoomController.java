@@ -48,6 +48,7 @@ public class RoomController {
             case PLAYER_READY -> room = roomService.playerReady(message);
             case PLAYER_CANCEL_READY -> room = roomService.playerCancelReady(message);
             case START_GAME -> room = roomService.startGame(message);
+            case SEND_PREDICTION -> room = roomService.addPrediction(message);
             default -> {
                 log.warn("Unknown message type: {}", message.getType());
                 throw new IllegalArgumentException("\"Unknown message type: {}\", message.getType()");

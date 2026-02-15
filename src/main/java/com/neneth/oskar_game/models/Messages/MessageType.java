@@ -5,5 +5,6 @@ public enum MessageType {
     JOIN_ROOM,
     PLAYER_READY,
     PLAYER_CANCEL_READY,
-    START_GAME
+    START_GAME,
+    SEND_PREDICTION
 }

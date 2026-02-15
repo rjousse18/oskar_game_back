@@ -17,6 +17,8 @@ public class Room {
     private String createdBy;
     private List<Player> players;
     private boolean isInProgress;
+    private List<Prediction> predictions;
+    private Integer step;
 
     public void addPlayer(final Player player) {
         List<Player> tempPlayers = new ArrayList<>(this.getPlayers());
