@@ -1,0 +1,27 @@
+Appli OskarGame
+
+Jeu de prédiction des résultats aux oscars.
+
+- On rejoint un salon privée (avec code) ou on crée un salon
+- Le jeu affiche les différentes avec les différentes options.
+- Chaque joueur donne sa prédiction et on attend que tout le monde ait prédis pour passer à la cat suivante.
+- Une fois finis, on peut quitter le salon.
+- On peut rejoindre le salon à tout moment une fois les prédis faites afin de voir les résultats.
+
+BACK en Java.
+Websocket.
+Spring Boot
+OPEN SOURCE !!!
+
+Le joueur qui crée la game est "admin" (il définis quand commencer la game)
+
+On définis le besoin. ✅
+On design la base de donnée. ✅
+On se documente sur les websocket en spring.
+On crée la base du projet spring.
+Et après on vois.
+
+On appel (API) pour créer une game, le front, une fois qu'il a reçu la réponse, se coonecter en websocket au serveur au topic spécifique de la room. (à voir comment faire, actuellement on se connecte en websocket au serveur au global (=> tous le monde vois les messages de tous le monde))
+
+Une fois connecté à la room, les joueurs envoient et recevoir des infos sur le topic specifique.
+
