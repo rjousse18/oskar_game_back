@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: oskar_game_db
+    environment:
+      POSTGRES_DB: oskar_game
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - oskar_game_db_data:/var/lib/postgresql/data
+
+volumes:
+  oskar_game_db_data:
