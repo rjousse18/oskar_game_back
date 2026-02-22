@@ -3,7 +3,9 @@ package com.neneth.oskar_game.services;
 import com.neneth.oskar_game.models.Dtos.ConnectRoomDto;
 import com.neneth.oskar_game.models.Dtos.CreateRoomDto;
 import com.neneth.oskar_game.models.Messages.WebSocketMessage;
+import com.neneth.oskar_game.models.MovieItem;
 import com.neneth.oskar_game.models.Player;
+import com.neneth.oskar_game.models.Prediction;
 import com.neneth.oskar_game.models.Room;
 import com.neneth.oskar_game.repositories.CategoryRepository;
 import lombok.Getter;
@@ -24,7 +26,8 @@ public class RoomService {
                 message.getClientId(),
                 message.getPseudo(),
                 true,
-                false
+                false,
+                new ArrayList<>()
         );
         final Room room = new Room(
                 UUID.randomUUID().toString(),
@@ -56,7 +59,8 @@ public class RoomService {
                 message.getClientId(),
                 message.getPseudo(),
                 false,
-                false
+                false,
+                new ArrayList<>()
         );
 
         room.addPlayer(currentPlayer);
@@ -99,13 +103,48 @@ public class RoomService {
     }
 
     public Room addPrediction(final WebSocketMessage message) {
+        if(message.getMovieItem() == null) {
+            throw new IllegalStateException("Cannot add predictions if no movie item given");
+        }
+
+
         final Room room = this.getRoom(message.getRoomId());
+        final Prediction currenPrediction = room.getPredictions().get(room.getStep());
 
-        // traitement
+        if(!currenPrediction.getMovieItems().contains(message.getMovieItem())) {
+            throw new IllegalStateException("Cannot add predictions if movie items are not in the list");
+        }
 
-        room.setStep(room.getStep()+1);
+        final Player currentPlayer = this.getPlayer(room, message.getClientId());
 
+        if(currentPlayer.getMovieItems().stream().map(MovieItem::getMovieItemId).toList().contains(message.getMovieItem().getMovieItemId())) {
+            throw new IllegalArgumentException("Cannot add predictions if movie item is already in the player's list");
+        }
+
+        currentPlayer.getMovieItems().add(message.getMovieItem());
+
+        if(isAllPlayersPredictedCurrent(room, currenPrediction)) {
+            room.setStep(room.getStep() + 1);
+        }
         return room;
+    }
+
+
+    public Boolean isAllPlayersPredictedCurrent(final Room room, final Prediction currentPrediction) {
+        return room
+                .getPlayers()
+                .stream()
+                .filter(p ->
+                        !currentPrediction
+                                .getMovieItems()
+                                .stream()
+                                .filter(movieItem -> p
+                                        .getMovieItems()
+                                        .stream()
+                                        .map(MovieItem::getMovieItemId)
+                                        .toList()
+                                        .contains(movieItem.getMovieItemId())).toList().isEmpty()
+                ).toList().size() == room.getPlayers().size();
     }
 
     public Room getRoom(final String roomId) {

@@ -29,6 +29,7 @@ public class CategoryService {
                     new Movie(
                             movieItem.getMovie().getMovieId(),
                             movieItem.getMovie().getTitle(),
+                            movieItem.getMovie().getOriginal_title(),
                             movieItem.getMovie().getYear().getYear()
                     ),
                     new ArrayList<>()

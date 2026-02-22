@@ -25,3 +25,9 @@ On appel (API) pour créer une game, le front, une fois qu'il a reçu la répons
 
 Une fois connecté à la room, les joueurs envoient et recevoir des infos sur le topic specifique.
 
+Quand on reçoit le message avec la room en inProgress = true, on change de page et on attend un message de prediction.
+
+Changer les couleurs dans le front
+Avoir les retours d'erreurs depuis le back pour les afficher dans le front
+Reste à faire : Page admin pour confirmer les résultats, sauvegarder les stats d'une room en base pour pouvoir les retrouver plus tard (ex: s'y reconnecter pour le leaderboard), page de leaderboard, trier les catégories différemment (probablement en changeant les ids dans le sql) pour les afficher des "moins importantes" aux "plus importantes", 
+

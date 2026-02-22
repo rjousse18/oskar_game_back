@@ -8,5 +8,6 @@ import lombok.Data;
 public class Movie {
     private final Long movieId;
     private final String title;
+    private final String original_title;
     private final Integer year;
 }

@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -12,4 +14,5 @@ public class Player {
     private String pseudo;
     private boolean isAdmin;
     private boolean isReady;
+    private List<MovieItem> movieItems;
 }

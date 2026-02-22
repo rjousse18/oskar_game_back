@@ -2,7 +2,7 @@ INSERT INTO years(year, oscar_ceremony) values
 (2026, '98e Cérémonie des Oscars'),
 (2025, '97e Cérémonie des Oscars');
 
-INSERT INTO movies(movieId, year_id, original_title, title) values
+INSERT INTO movies(movie_id, year_id, original_title, title) values
 (1, 1, 'Bugonia', ''),
 (2, 1, 'Sirat', 'Sirât'),
 (3, 1, 'Sentimental Value', 'Valeur Sentimentale'),
@@ -56,7 +56,7 @@ INSERT INTO movies(movieId, year_id, original_title, title) values
 (51, 1, 'The Girl Who Cried Pearls', ''),
 (52, 1, 'The Three Sisters', '');
 
-INSERT INTO categories(categoryId, year_id, name) values
+INSERT INTO categories(category_id, year_id, name) values
 (1, 1, 'Meilleur Film'),
 (2, 1, 'Meilleur Réalisateur'),
 (3, 1, 'Meilleur Acteur'),
@@ -119,7 +119,7 @@ INSERT INTO movie_items(won, category_id, movie_id, nominee) values
 (false, 5, 3, 'Stellan Skarsgaard'),
 
 (false, 2, 10, 'Chloe Zhao'),
-(false, 2, 17, 'Josh Sadie'),
+(false, 2, 17, 'Josh Safdie'),
 (false, 2, 5, 'Paul Thomas Anderson'),
 (false, 2, 3, 'Joachim Trier'),
 (false, 2, 7, 'Ryan Coogler'),
