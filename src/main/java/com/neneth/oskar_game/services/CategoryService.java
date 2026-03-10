@@ -3,13 +3,11 @@ package com.neneth.oskar_game.services;
 import com.neneth.oskar_game.models.Entities.CategoryEntity;
 import com.neneth.oskar_game.models.Movie;
 import com.neneth.oskar_game.models.MovieItem;
-import com.neneth.oskar_game.models.Player;
 import com.neneth.oskar_game.models.Prediction;
 import com.neneth.oskar_game.repositories.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,7 +30,7 @@ public class CategoryService {
                             movieItem.getMovie().getOriginal_title(),
                             movieItem.getMovie().getYear().getYear()
                     ),
-                    new ArrayList<>()
+                    movieItem.getWon()
             )).toList()
         )).toList();
     }

@@ -2,6 +2,7 @@ package com.neneth.oskar_game.services;
 
 import com.neneth.oskar_game.models.Dtos.ConnectRoomDto;
 import com.neneth.oskar_game.models.Dtos.CreateRoomDto;
+import com.neneth.oskar_game.models.Entities.ResultEntity;
 import com.neneth.oskar_game.models.Messages.WebSocketMessage;
 import com.neneth.oskar_game.models.MovieItem;
 import com.neneth.oskar_game.models.Player;
@@ -19,6 +20,7 @@ import java.util.*;
 @Getter
 public class RoomService {
     private final CategoryService categoryService;
+    private final ResultService resultService;
     private List<Room> rooms = new ArrayList<>();
 
     public Room createRoom(final WebSocketMessage message) {
@@ -125,6 +127,13 @@ public class RoomService {
 
         if(isAllPlayersPredictedCurrent(room, currenPrediction)) {
             room.setStep(room.getStep() + 1);
+        }
+
+        if(room.getStep() == room.getPredictions().size() - 1) {
+            final ResultEntity result = resultService.saveFromRoom(room);
+            if(result == null) {
+                throw new IllegalStateException("Cannot save results !!");
+            }
         }
         return room;
     }
