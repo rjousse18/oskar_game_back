@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:latest
+    image: postgres:16
     container_name: oskar_game_db
     environment:
       POSTGRES_DB: oskar_game

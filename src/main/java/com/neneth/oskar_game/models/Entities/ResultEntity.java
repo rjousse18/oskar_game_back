@@ -1,6 +1,7 @@
 package com.neneth.oskar_game.models.Entities;
 
-import com.neneth.oskar_game.models.Player;
+import com.neneth.oskar_game.models.Movie;
+import com.neneth.oskar_game.models.MovieItem;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -13,17 +14,50 @@ import org.hibernate.type.SqlTypes;
 
 import java.util.List;
 
-@Entity(name = "results")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity(name = "results")
 public class ResultEntity {
     @Id
     private String roomId;
 
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "players", columnDefinition = "jsonb")
-    private List<Player> players;
+    private List<MinimizedPlayer> players;
 
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "prediction_result", columnDefinition = "jsonb")
+    private List<PredictionResult> predictionResults;
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class MinimizedPlayer {
+        private String clientId;
+        private String pseudo;
+        private List<MinimizedMovieItem> movieItems;
+    }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class MinimizedMovieItem {
+        private Long movieItemId;
+        private String nominee;
+        private Movie movie;
+    }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class PredictionResult {
+        private Long categoryId;
+        private String categoryName;
+        private Long winnerMovieItemId;
+    }
 }

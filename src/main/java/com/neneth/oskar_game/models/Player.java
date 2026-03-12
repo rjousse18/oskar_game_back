@@ -1,5 +1,6 @@
 package com.neneth.oskar_game.models;
 
+import com.neneth.oskar_game.models.Entities.ResultEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,4 +18,12 @@ public class Player {
     private boolean isAdmin;
     private boolean isReady;
     private List<MovieItem> movieItems;
+
+    public ResultEntity.MinimizedPlayer toMinimizedPlayer() {
+        return new ResultEntity.MinimizedPlayer(
+                this.getClientId(),
+                this.getPseudo(),
+                this.getMovieItems().stream().map(MovieItem::toMinimizedMovieItem).toList()
+        );
+    }
 }

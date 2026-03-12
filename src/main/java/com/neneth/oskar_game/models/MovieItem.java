@@ -1,6 +1,7 @@
 package com.neneth.oskar_game.models;
 
 import com.neneth.oskar_game.models.Entities.MovieItemEntity;
+import com.neneth.oskar_game.models.Entities.ResultEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,12 +17,11 @@ public class MovieItem {
     private Movie movie;
     private Boolean won;
 
-    public MovieItem createFromEntity(MovieItemEntity entity) {
-        this.movieItemId = entity.getMovieItemId();
-        this.nominee = entity.getNominee();
-        this.movie = new Movie().createFromEntity(entity.getMovie());
-        this.won = entity.getWon();
-
-        return this;
+    public ResultEntity.MinimizedMovieItem toMinimizedMovieItem() {
+        return new ResultEntity.MinimizedMovieItem(
+                this.getMovieItemId(),
+                this.getNominee(),
+                this.getMovie()
+        );
     }
 }
