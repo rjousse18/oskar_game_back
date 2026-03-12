@@ -4,10 +4,7 @@ import com.neneth.oskar_game.models.Entities.ResultEntity;
 import com.neneth.oskar_game.services.ResultService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/results")
@@ -16,6 +13,7 @@ public class ResultRestController {
     private final ResultService resultService;
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<ResultEntity> getResultById(@PathVariable String id) {
 
         final ResultEntity finalResult = resultService.findByIdMappedWithWonAsPlayerList(id);

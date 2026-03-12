@@ -48,6 +48,7 @@ public class ResultEntity {
     public static class MinimizedMovieItem {
         private Long movieItemId;
         private String nominee;
+        private String categoryName;
         private Movie movie;
     }
 

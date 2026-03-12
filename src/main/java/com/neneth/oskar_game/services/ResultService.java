@@ -21,7 +21,7 @@ public class ResultService {
     public ResultEntity saveFromRoom(final Room room) {
         return resultRepository.save(new ResultEntity(
                 room.getId(),
-                room.getPlayers().stream().map(Player::toMinimizedPlayer).toList(),
+                room.getPlayers().stream().map(player -> player.toMinimizedPlayer(room.getPredictions())).toList(),
                 new ArrayList<>()
         ));
     }

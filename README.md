@@ -50,12 +50,12 @@ Le projet est configuré pour initialiser automatiquement les données à partir
 ## TODO (front et back) (par ordre d'importance):
 
 - Nouvelle page de résultats (prend en compte si on a les résultats ou si c'est juste le résumé de fin de partie)
-- La page de résultats doit être accessible via un lien (genre /results/<roomId>) (qr code possible ?)
 - Voir si c'est possible d'essayer de rejoindre une game et si elle est terminé (in Progress + step = prediction.length), rediriger vers la page de résultats (en théorie ça devrait se faire tout seul, à vérifier)
 - Faire une page d'administration pour rentrer les résultats des oscars.
 - Changer les id des rooms pour qu'ils soient plus court (5 caractères lettres / chiffres)
 - Modifier le css pour que la sélection de nommés prenne presque toute la place en mode téléphone
 - Modifier le css pour harmoniser les textes, etc.
+- AVANT MEP : variabiliser les host, bdd, etc (back et front) (cors, appel api, socket service)
 - Harmoniser le code du front en divisant par composant (notamment la page Game)
 - Trouver un moyen d'envoyer les erreurs du back au front pour les afficher
 - Afficher des qr code pour rejoindre les games au lieu de juste le code.

@@ -17,10 +17,11 @@ public class MovieItem {
     private Movie movie;
     private Boolean won;
 
-    public ResultEntity.MinimizedMovieItem toMinimizedMovieItem() {
+    public ResultEntity.MinimizedMovieItem toMinimizedMovieItem(final String categoryName) {
         return new ResultEntity.MinimizedMovieItem(
                 this.getMovieItemId(),
                 this.getNominee(),
+                categoryName,
                 this.getMovie()
         );
     }
