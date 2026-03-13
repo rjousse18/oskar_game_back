@@ -50,11 +50,14 @@ public class RoomService {
     public Room joinRoom(final WebSocketMessage message) {
         Room room = this.getRoom(message.getRoomId());
 
+        final Optional<Player> player = room.getPlayers().stream().filter(p -> p.getPseudo().equals(message.getPseudo())).findFirst();
+
         if(room.isInProgress()) {
+            if(room.getPredictions().size() == room.getStep() && player.isPresent()) { // The game is over and the player exist in it, we can let him join to see the results
+                return room;
+            }
             throw new IllegalStateException("Cannot join a room that is already in progress");
         }
-
-        final Optional<Player> player = room.getPlayers().stream().filter(p -> p.getClientId().equals(message.getClientId())).findFirst();
 
         if (player.isPresent()) {
             return room;
@@ -112,7 +115,6 @@ public class RoomService {
             throw new IllegalStateException("Cannot add predictions if no movie item given");
         }
 
-
         final Room room = this.getRoom(message.getRoomId());
         final Prediction currenPrediction = room.getPredictions().get(room.getStep());
 
@@ -132,7 +134,7 @@ public class RoomService {
             room.setStep(room.getStep() + 1);
         }
 
-        if(room.getStep() == room.getPredictions().size() - 1) {
+        if(room.getStep() == room.getPredictions().size()) { //
             final ResultEntity result = resultService.saveFromRoom(room);
             if(result == null) {
                 throw new IllegalStateException("Cannot save results !!");
