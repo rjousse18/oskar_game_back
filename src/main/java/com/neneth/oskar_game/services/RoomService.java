@@ -11,9 +11,12 @@ import com.neneth.oskar_game.models.Room;
 import com.neneth.oskar_game.repositories.CategoryRepository;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
 import java.util.*;
+import java.util.random.RandomGenerator;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +35,7 @@ public class RoomService {
                 new ArrayList<>()
         );
         final Room room = new Room(
-                UUID.randomUUID().toString(),
+                RandomStringUtils.random(6, 0, 0, true, true, null, new SecureRandom()).toUpperCase(),
                 new java.util.Date(),
                 message.getPseudo(),
                 List.of(currentPlayer),

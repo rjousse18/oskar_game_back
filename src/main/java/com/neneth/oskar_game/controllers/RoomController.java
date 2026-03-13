@@ -34,10 +34,6 @@ public class RoomController {
             SimpMessageHeaderAccessor headerAccessor
     ) {
         final Room room;
-//        final String playerId = principal.getName();
-
-//        headerAccessor.getSessionAttributes().put("roomId", message.getRoomId());
-
         switch (message.getType()) {
             case CREATE_ROOM -> {
                 room = roomService.createRoom(message);
