@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> {
-    public List<CategoryEntity> findAllByYear_Year(final Integer year);
+    List<CategoryEntity> findAllByYear_YearOrderByCategoryIdDesc(Integer yearYear);
 
     @Query(nativeQuery = true, value = """
             SELECT 
@@ -19,5 +19,5 @@ public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> 
                INNER JOIN movie_items m ON c.category_id = m.category_id
                WHERE m.won IS TRUE
             """)
-    public List<ResultEntity.PredictionResult> findAllWithWinner();
+    List<ResultEntity.PredictionResult> findAllWithWinner();
 }

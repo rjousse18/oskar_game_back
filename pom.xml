@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.neneth</groupId>
 	<artifactId>oskar_game</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.1.2</version>
 	<name>oskar_game</name>
 	<description>Prediction game for Oscar ceremonies</description>
 	<url/>
@@ -28,6 +28,8 @@
 	</scm>
 	<properties>
 		<java.version>25</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.release>${java.version}</maven.compiler.release>
 	</properties>
 	<dependencies>
 		<!-- Utils -->
@@ -100,6 +102,11 @@
 			<artifactId>spring-boot-starter-websocket-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -108,6 +115,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
+					<release>${java.version}</release> <!-- the final compiled version -->
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.projectlombok</groupId>

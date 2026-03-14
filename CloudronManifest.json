@@ -1,0 +1,18 @@
+{
+  "id": "com.nastream.oskarz_game_back",
+  "title": "Oskarz Game Back",
+  "author": "Rémi Joussé <remi.jousse@nastream.fr>",
+  "description": "Backen app for Oskarz Game",
+  "tagline": "A great beginning",
+  "version": "1.1.2",
+  "healthCheckPath": "/actuator/health",
+  "httpPort": 8080,
+  "addons": {
+    "postgresql": {}
+  },
+  "manifestVersion": 2,
+  "website": "https://back.oskarz.nastream.fr",
+  "contactEmail": "webmaster@nastream.fr",
+  "tags": [ "backend", "oscars", "oskarz", "game", "websocket", "spring", "java" ],
+  "mediaLinks": [ "https://images.rapgenius.com/fd0175ef780e2feefb30055be9f2e022.520x343x1.jpg" ]
+}

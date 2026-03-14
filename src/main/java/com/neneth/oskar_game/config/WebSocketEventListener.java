@@ -18,11 +18,6 @@ public class WebSocketEventListener {
     private final RoomService roomService;
     private final SimpMessagingTemplate messagingTemplate;
 
-//    @EventListener
-//    public void onSubscribe(SessionSubscribeEvent event) {
-//        System.out.println(event);
-//    }
-
     @EventListener
     public void onDisconnect(SessionDisconnectEvent event) {
         StompHeaderAccessor accessor = StompHeaderAccessor.wrap(event.getMessage());

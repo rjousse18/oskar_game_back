@@ -53,8 +53,10 @@ Le projet est configuré pour initialiser automatiquement les données à partir
 - DONE : Voir si c'est possible d'essayer de rejoindre une game et si elle est terminé (in Progress + step = prediction.length), rediriger vers la page de résultats (en théorie ça devrait se faire tout seul, à vérifier)
 - DONE : Changer les id des rooms pour qu'ils soient plus court (5 caractères lettres / chiffres)
 - DONE : Modifier le css pour que la sélection de nommés prenne presque toute la place en mode téléphone
-- Afficher le score board trié dans l'ordre décroissant
+- DONE : Afficher le score board trié dans l'ordre décroissant
+- DONE : Changer le order by de la query
 - Faire une page d'administration pour rentrer les résultats des oscars.
+- Modifier les boutons de prédiction pour avoir les films liés en dessous du nominé + en couleur plus légère
 - Modifier le css pour harmoniser les textes, etc.
 - AVANT MEP : variabiliser les host, bdd, etc (back et front) (cors, appel api, socket service)
 - Harmoniser le code du front en divisant par composant (notamment la page Game)

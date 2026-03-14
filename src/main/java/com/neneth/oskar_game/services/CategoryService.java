@@ -16,7 +16,7 @@ public class CategoryService {
     private final CategoryRepository categoryRepository;
 
     public List<Prediction> getAllCategoriesThisYearAsPrediction(final Integer year) {
-        List<CategoryEntity> categories = this.categoryRepository.findAllByYear_Year(year);
+        List<CategoryEntity> categories = this.categoryRepository.findAllByYear_YearOrderByCategoryIdDesc(year);
 
         return categories.stream().map(category -> new Prediction(
             category.getName(),
