@@ -60,6 +60,13 @@ Le projet est configuré pour initialiser automatiquement les données à partir
 - DONE : Modifier les boutons de prédiction pour avoir les films liés en dessous du nominé + en couleur plus légère
 - DONE : Modifier le css pour harmoniser les textes, etc.
 - DONE : AVANT MEP : variabiliser les host, bdd, etc (back et front) (cors, appel api, socket service)
+- DONE : Affichage résultats en format téléphone
+- Boutons bas de page en format téléphone
+- DONE : Afficher le lien de la page de résultats pour que les gens puissent le copier facilement et revenir dessus une fois gagnants annoncés
+- DONE : Affichage score en format téléphone pas terrible
+- DONE : Faire les règles
+- Lier le github (une fois l'historique nettoyé et la gestion du mode admin fait correctement)
+- DONE : Annoncer sur twitter
 - Harmoniser le code du front en divisant par composant (notamment la page Game)
 - Trouver un moyen d'envoyer les erreurs du back au front pour les afficher
 - Afficher des qr code pour rejoindre les games au lieu de juste le code.

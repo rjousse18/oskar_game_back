@@ -4,7 +4,7 @@
   "author": "Rémi Joussé <remi.jousse@nastream.fr>",
   "description": "Backen app for Oskarz Game",
   "tagline": "A great beginning",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "healthCheckPath": "/actuator/health",
   "httpPort": 8080,
   "addons": {
