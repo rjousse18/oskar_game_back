@@ -192,7 +192,7 @@ INSERT INTO movie_items(won, category_id, movie_id, nominee) values
 
 (false, 15, 12, 'Avatar : De feu et de cendres'),
 (false, 15, 9, 'F1'),
-(false, 15, 33, 'Jurassic World : Renaissance'),
+(false, 15, 33, 'Jurassic World: Renaissance'),
 (false, 15, 32, 'The Lost Bus : Au cœur des flammes'),
 (false, 15, 7, 'Sinners'),
 
