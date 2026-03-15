@@ -25,6 +25,7 @@ public class RoomService {
     private final CategoryService categoryService;
     private final ResultService resultService;
     private List<Room> rooms = new ArrayList<>();
+    private static final String ADMIN_PSEUDO = "ADMIN_ADMIN_ADMIN_PSEUDO";
 
     public Room createRoom(final WebSocketMessage message) {
         final Player currentPlayer = new Player(
@@ -35,14 +36,19 @@ public class RoomService {
                 new ArrayList<>()
         );
         final Room room = new Room(
-                RandomStringUtils.random(6, 0, 0, true, true, null, new SecureRandom()).toUpperCase(),
+                message.getPseudo().equals(ADMIN_PSEUDO) ? "ROOM_ADMIN" : RandomStringUtils.random(6, 0, 0, true, true, null, new SecureRandom()).toUpperCase(),
                 new java.util.Date(),
                 message.getPseudo(),
                 List.of(currentPlayer),
-                false,
+                message.getPseudo().equals(ADMIN_PSEUDO),
                 categoryService.getAllCategoriesThisYearAsPrediction(new GregorianCalendar().get(Calendar.YEAR)),
                 0
         );
+
+        if(room.getId().equals("ROOM_ADMIN")) {
+            this.rooms.remove(this.rooms.stream().filter(r -> r.getId().equals("ROOM_ADMIN")).findFirst().orElse(null));
+        }
+
         this.rooms.add(room);
         return room;
     }

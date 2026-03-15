@@ -24,4 +24,15 @@ public class ResultRestController {
 
         return ResponseEntity.ok(finalResult);
     }
+
+    @PatchMapping("/{id}/won")
+    public ResponseEntity<Boolean> setMovieItemAsWon(@PathVariable Long id) {
+        final boolean success = resultService.setMovieItemAsWon(id);
+
+        if (!success) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(true);
+    }
 }

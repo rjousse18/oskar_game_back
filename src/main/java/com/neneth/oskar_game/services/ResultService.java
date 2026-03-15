@@ -4,6 +4,7 @@ import com.neneth.oskar_game.models.Entities.ResultEntity;
 import com.neneth.oskar_game.models.Player;
 import com.neneth.oskar_game.models.Room;
 import com.neneth.oskar_game.repositories.CategoryRepository;
+import com.neneth.oskar_game.repositories.MovieItemRepository;
 import com.neneth.oskar_game.repositories.ResultRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,15 @@ import java.util.*;
 public class ResultService {
     private final ResultRepository resultRepository;
     private final CategoryRepository categoryRepository;
+    private final MovieItemRepository movieItemRepository;
+
+    public Boolean setMovieItemAsWon(final Long movieItemId) {
+        if (movieItemRepository.findByMovieItemId(movieItemId) != null) {
+            movieItemRepository.updateWonByMovieItemId(movieItemId, true);
+            return true;
+        }
+        return false;
+    }
 
     public ResultEntity saveFromRoom(final Room room) {
         return resultRepository.save(new ResultEntity(

@@ -55,10 +55,11 @@ Le projet est configuré pour initialiser automatiquement les données à partir
 - DONE : Modifier le css pour que la sélection de nommés prenne presque toute la place en mode téléphone
 - DONE : Afficher le score board trié dans l'ordre décroissant
 - DONE : Changer le order by de la query
-- Faire une page d'administration pour rentrer les résultats des oscars.
+- DONE : Faire une page d'administration pour rentrer les résultats des oscars.
+- DONE : Gérer l'égalité des scores à l'affichage
 - DONE : Modifier les boutons de prédiction pour avoir les films liés en dessous du nominé + en couleur plus légère
-- Modifier le css pour harmoniser les textes, etc.
-- DONE: AVANT MEP : variabiliser les host, bdd, etc (back et front) (cors, appel api, socket service)
+- DONE : Modifier le css pour harmoniser les textes, etc.
+- DONE : AVANT MEP : variabiliser les host, bdd, etc (back et front) (cors, appel api, socket service)
 - Harmoniser le code du front en divisant par composant (notamment la page Game)
 - Trouver un moyen d'envoyer les erreurs du back au front pour les afficher
 - Afficher des qr code pour rejoindre les games au lieu de juste le code.
